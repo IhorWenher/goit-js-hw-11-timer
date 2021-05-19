@@ -48,6 +48,7 @@ class Timer {
     }
 
     start() {
+        console.log("Cтарт клік");
         if (this.isActive) {
             return;
         }
@@ -70,6 +71,7 @@ class Timer {
     }
 
     stop() {
+        console.log("Cтоп клік");
         clearInterval(this.intervalId);
         this.isActive = false;
         const time = this.getTimeComponents(0);
