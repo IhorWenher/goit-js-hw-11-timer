@@ -35,11 +35,16 @@
 
     <div class="test-timer"></div>
 
-    <div class="input-container">
-        <input type="date" class="js-date-input" placeholder="Введите дату окончания акции">
-        <button class="btn start" data-action-start>Запустить</button>
-        <button class="btn stop" data-action-stop>Остановить</button>
-    </div>
+    <form>
+        <div class="input-container">
+            <label for="max-date">Форма настройки таймера</label>
+            <input type="date" class="js-date-input" placeholder="Введите дату окончания акции">
+        </div>
+        <div class="btn-container">
+            <input type="submit" class="btn start">
+            <button class="btn stop" data-action-stop>Остановить</button>
+        </div>
+    </form>
 
 
     <script src="./index.js" type="module"></script>
