@@ -95,7 +95,7 @@ const timer = new Timer({
     onTick: updateClockface,
 });
 
-refs.startBtn.addEventListener('click', timer.start.bind(timer));
+refs.startBtn.addEventListener('submit', timer.start.bind(timer));
 
 refs.stopBtn.addEventListener('click', timer.stop.bind(timer));
 
