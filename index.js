@@ -39,7 +39,7 @@ class Timer {
         this.intervalId = null;
         this.isActive = false;
         this.onTick = onTick;
-        this.init = onTick;
+        this.init();
     }
 
     init() {
