@@ -1,37 +1,14 @@
 "use strict";
 
-
-/*
- * Оставшиеся дни: делим значение UTC на 1000 * 60 * 60 * 24, количество
- * миллисекунд в одном дне (миллисекунды * секунды * минуты * часы)
- */
-//const days = Math.floor(time / (1000 * 60 * 60 * 24));
-
-/*
- * Оставшиеся часы: получаем остаток от предыдущего расчета с помощью оператора
- * остатка % и делим его на количество миллисекунд в одном часе
- * (1000 * 60 * 60 = миллисекунды * минуты * секунды)
- */
-//const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-/*
- * Оставшиеся минуты: получаем оставшиеся минуты и делим их на количество
- * миллисекунд в одной минуте (1000 * 60 = миллисекунды * секунды)
- */
-//const mins = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-
-/*
- * Оставшиеся секунды: получаем оставшиеся секунды и делим их на количество
- * миллисекунд в одной секунде (1000)
- */
-//const secs = Math.floor((time % (1000 * 60)) / 1000);
-
 const refs = {
     startBtn: document.querySelector('[data-action-start]'),
     stopBtn: document.querySelector('[data-action-stop]'),
     dateInput: document.querySelector('.js-date-input'),
-    clockface: document.querySelector('.test-timer')
-
+    stopDateInput: document.querySelector('.js-date-input'),
+    daysMonitor: document.querySelector('[data-value="days"]'),
+    hoursMonitor: document.querySelector('[data-value="hours"]'),
+    minsMonitor: document.querySelector('[data-value="mins"]'),
+    secsMonitor: document.querySelector('[data-value="secs"]'),
 }
 
 class Timer {
@@ -48,32 +25,39 @@ class Timer {
     }
 
     start() {
-        console.log("Cтарт клік");
-        if (this.isActive) {
+        if (this.isActive || refs.stopDateInput.value === "") {
             return;
         }
 
-        const startTime = Date.now();
+        console.dir();
+
+        // Дата с формы в unix
+        const stopDateArray = refs.stopDateInput.value.split('-');
+        const stopDateArrayForDateFormat = [stopDateArray[0], stopDateArray[1] - 1, stopDateArray[2]];
+        const stopDate = new Date(...stopDateArrayForDateFormat);
+        const stopDateUnix = stopDate.getTime();
+        //
+
+        const startTime = stopDateUnix;
+
         this.isActive = true;
 
         this.intervalId = setInterval(() => {
             const currentTime = Date.now();
             this.isActive = true;
-            const deltaTime = currentTime - startTime;
-            //const deltaMinus = startTime - currentTime;
+            const deltaTime = startTime - currentTime;
             const time = this.getTimeComponents(deltaTime);
-            //const timeComponentsMinus = getTimeComponents(deltaMinus);
 
             this.onTick(time);
         }, 1000);
     }
 
     stop() {
-        console.log("Cтоп клік");
         clearInterval(this.intervalId);
         this.isActive = false;
         const time = this.getTimeComponents(0);
         this.onTick(time);
+        refs.stopDateInput.value = null;
     }
 
     getTimeComponents(time) {
@@ -100,5 +84,8 @@ refs.startBtn.addEventListener('click', timer.start.bind(timer));
 refs.stopBtn.addEventListener('click', timer.stop.bind(timer));
 
 function updateClockface({ days, hours, mins, secs }) {
-    refs.clockface.textContent = `${days}:${hours}:${mins}:${secs}`;
+    refs.daysMonitor.textContent = days;
+    refs.hoursMonitor.textContent = hours;
+    refs.minsMonitor.textContent = mins;
+    refs.secsMonitor.textContent = secs;
 }

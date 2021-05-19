@@ -10,46 +10,47 @@
 </head>
 
 <body>
-    <div class="timer" id="timer-1">
-        <div class="field">
-            <span class="value" data-value="days">11</span>
-            <span class="label">Days</span>
+    <div class="main">
+        <div class="timer" id="timer-1">
+            <div class="field">
+                <span class="value" data-value="days">11</span>
+                <span class="label">Days</span>
+            </div>
+
+            <div class="field">
+                <span class="value" data-value="hours">11</span>
+                <span class="label">Hours</span>
+            </div>
+
+            <div class="field">
+                <span class="value" data-value="mins">11</span>
+                <span class="label">Minutes</span>
+            </div>
+
+            <div class="field">
+                <span class="value" data-value="secs">11</span>
+                <span class="label">Seconds</span>
+            </div>
         </div>
 
-        <div class="field">
-            <span class="value" data-value="hours">11</span>
-            <span class="label">Hours</span>
+        <div class="settings-container">
+            <label for="max-date" class="input-label">Введите дату окончания акции/розпродажи</label>
+            <input type="date" class="input js-date-input">
         </div>
 
-        <div class="field">
-            <span class="value" data-value="mins">11</span>
-            <span class="label">Minutes</span>
+        <div class="button-container">
+            <button class="btn start" data-action-start>Запуск</button>
+            <button class="btn stop" data-action-stop>Остановить</button>
         </div>
 
-        <div class="field">
-            <span class="value" data-value="secs">11</span>
-            <span class="label">Seconds</span>
-        </div>
+
     </div>
 
 
-    <div class="test-timer">00:00:00:00</div>
-    
-    <button class="btn start" data-action-start>Запуск</button>
-    <button class="btn stop" data-action-stop>Остановить</button>
 
-    <!--<form>
-        <div class="input-container">
-            <label for="max-date">Форма настройки таймера</label>
-            <input type="date" class="js-date-input" placeholder="Введите дату окончания акции">
-        </div>
-        <div class="btn-container">
-            <input type="submit" class="btn">
-        </div>
-    </form>-->
-    
-           
-  
+
+
+
 
     <script src="./index.js" type="module"></script>
 </body>
