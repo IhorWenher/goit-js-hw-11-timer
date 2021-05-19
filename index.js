@@ -65,8 +65,6 @@ class Timer {
             //const timeComponentsMinus = getTimeComponents(deltaMinus);
 
             this.onTick(time);
-            console.log(`${days}:${hours}:${mins}:${secs}`);
-
         }, 1000);
     }
 
