@@ -29,8 +29,6 @@ class Timer {
             return;
         }
 
-        console.dir();
-
         // Дата с формы в unix
         const stopDateArray = refs.stopDateInput.value.split('-');
         const stopDateArrayForDateFormat = [stopDateArray[0], stopDateArray[1] - 1, stopDateArray[2]];
