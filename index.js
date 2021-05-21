@@ -73,6 +73,14 @@ class Timer {
     pad(value) {
         return String(value).padStart(2, '0');
     }
+    
+    
+    updateClockface({ days, hours, mins, secs }) {
+        refs.daysMonitor.textContent = days;
+        refs.hoursMonitor.textContent = hours;
+        refs.minsMonitor.textContent = mins;
+        refs.secsMonitor.textContent = secs;
+    }
 }
 
 const timer = new Timer({
@@ -82,10 +90,3 @@ const timer = new Timer({
 refs.startBtn.addEventListener('click', timer.start.bind(timer));
 
 refs.stopBtn.addEventListener('click', timer.stop.bind(timer));
-
-function updateClockface({ days, hours, mins, secs }) {
-    refs.daysMonitor.textContent = days;
-    refs.hoursMonitor.textContent = hours;
-    refs.minsMonitor.textContent = mins;
-    refs.secsMonitor.textContent = secs;
-}
